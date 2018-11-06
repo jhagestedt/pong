@@ -1,0 +1,20 @@
+server:
+  port: 8082
+
+swagger:
+  title: Pong API
+  description: Pong API that respond with a Pong to a Ping
+  include: /api/.*
+
+spring:
+  application:
+    name: pong
+# injected by config/config-app/src/main/resources/configs/pong-${profile}.yml
+#  activemq:
+#    broker-url: tcp://localhost:61616
+
+eureka:
+# injected by config/config-app/src/main/resources/configs/application-${profile}.yml
+#  client:
+#    service-url:
+#      default-zone: http://localhost:8761/eureka/
