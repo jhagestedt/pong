@@ -1,0 +1,23 @@
+server:
+  port: 8082
+
+swagger:
+  title: pong
+  description: pong
+  include: /api/.*
+
+pong:
+  jms: false
+  rest: false
+  hazelcast: false
+
+spring:
+  application:
+    name: pong
+  cloud:
+    config:
+      enabled: false
+
+eureka:
+  client:
+    enabled: false
