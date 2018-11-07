@@ -1,19 +1,17 @@
 package com.example.pong.service;
 
+import com.example.Ping;
+import com.example.Pong;
 import com.example.exception.PongException;
-import com.example.ping.Ping;
-import com.example.pong.Pong;
-import com.example.pong.PongApi;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-public class PongService implements PongApi {
+public class PongService {
 
-    @Override
-    public Pong pong(Ping ping) {
-        log.info("pong() received {}", ping);
+    public Pong onPing(Ping ping) {
+        log.info("onPing() received {}", ping);
         if (ping == null || ping.getUuid() == null) {
             throw new PongException("Pong model did not contain an uuid.");
         }

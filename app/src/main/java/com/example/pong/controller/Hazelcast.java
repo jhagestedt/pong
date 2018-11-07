@@ -1,10 +1,10 @@
-package com.example.pong.hazelcast;
+package com.example.pong.controller;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-import com.example.ping.Ping;
-import com.example.pong.Pong;
+import com.example.Ping;
+import com.example.Pong;
 import com.example.pong.service.PongService;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.ITopic;
@@ -12,11 +12,13 @@ import com.hazelcast.core.Message;
 import com.hazelcast.core.MessageListener;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.stereotype.Controller;
 
 @Slf4j
-@Component
-public class PongHazelcast implements MessageListener<Ping> {
+@Controller
+@ConditionalOnProperty(name = "pong.hazelcast", havingValue = "true")
+public class Hazelcast implements MessageListener<Ping> {
 
     private String key;
 
@@ -39,6 +41,6 @@ public class PongHazelcast implements MessageListener<Ping> {
 
     @Override
     public void onMessage(Message<Ping> message) {
-        hazelcast.getTopic(Pong.QUEUE).publish(service.pong(message.getMessageObject()));
+        hazelcast.getTopic(Pong.QUEUE).publish(service.onPing(message.getMessageObject()));
     }
 }

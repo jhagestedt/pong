@@ -1,7 +1,8 @@
 package com.example.pong.config;
 
-import com.example.pong.config.properties.SwaggerProperties;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -10,23 +11,28 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@Configuration
+@Getter
+@Setter
 @EnableSwagger2
+@Configuration
+@ConfigurationProperties(prefix = "swagger")
 public class SwaggerConfig {
 
-    @Autowired
-    private SwaggerProperties swaggerProperties;
+
+    private String title;
+    private String description;
+    private String include;
 
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
             .apiInfo(new ApiInfoBuilder()
-                .title(swaggerProperties.getTitle())
-                .description(swaggerProperties.getDescription())
+                .title(title)
+                .description(description)
                 .build())
             .forCodeGeneration(true)
             .select()
-            .paths(PathSelectors.regex(swaggerProperties.getInclude()))
+            .paths(PathSelectors.regex(include))
             .build();
     }
 }
