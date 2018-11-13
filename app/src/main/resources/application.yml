@@ -9,7 +9,6 @@ swagger:
 pong:
   jms: true
   rest: true
-  hazelcast: true
 
 spring:
   application:
