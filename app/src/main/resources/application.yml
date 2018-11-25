@@ -7,7 +7,6 @@ swagger:
   include: /api/.*
 
 pong:
-  jms: true
   rest: true
 
 spring:
