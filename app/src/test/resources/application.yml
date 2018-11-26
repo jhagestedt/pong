@@ -7,9 +7,8 @@ swagger:
   include: /api/.*
 
 pong:
-  jms: false
   rest: false
-  hazelcast: false
+  servicebus: false
 
 spring:
   application:
