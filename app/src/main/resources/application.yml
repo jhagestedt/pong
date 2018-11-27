@@ -13,21 +13,18 @@ pong:
 spring:
   application:
     name: pong
-# injected by config/config-app/src/main/resources/configs/pong-${profile}.yml
-#  activemq:
-#    broker-url: tcp://localhost:61616
 
 feign:
   hystrix:
     enabled: true
 
 eureka:
-# injected by config/config-app/src/main/resources/configs/application-${profile}.yml
+# injected by vault or pipeline
 #  client:
-#    service-url:
-#      default-zone: http://localhost:8761/eureka/
+#    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka/
 
 azure:
-# injected by config/config-app/src/main/resources/configs/ping-${profile}.yml
+# injected by vault or pipeline
 #  servicebus:
 #    connection: none
