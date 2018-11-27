@@ -15,7 +15,7 @@ spring:
     name: pong
 # injected by config/config-app/src/main/resources/configs/pong-${profile}.yml
 #  activemq:
-#    broker-url: tcp://localhost:61616
+#    brokerUrl: tcp://localhost:61616
 
 feign:
   hystrix:
@@ -24,5 +24,5 @@ feign:
 eureka:
 # injected by config/config-app/src/main/resources/configs/application-${profile}.yml
 #  client:
-#    service-url:
-#      default-zone: http://localhost:8761/eureka/
+#    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka/
