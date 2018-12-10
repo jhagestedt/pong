@@ -16,6 +16,30 @@ spring:
   cloud:
     config:
       enabled: false
+    azure:
+      credential-file-path: classpath:authentication.json
+      resource-group: tsivb-srv
+      region: Central US
+      eventhub:
+        namespace: tsivb-eventhub
+        checkpoint-storage-account: tsivbeventhubstorage
+      servicebus:
+        queue:
+          enabled: false
+        topic:
+          enabled: false
+      telemetry:
+        enabled: false
+      redis:
+        enabled: false
+    stream:
+      bindings:
+        ping:
+          destination: ping
+          group: $Default
+        pong:
+          destination: pong
+          group: $Default
 
 eureka:
   client:
