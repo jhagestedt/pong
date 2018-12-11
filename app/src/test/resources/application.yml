@@ -9,6 +9,7 @@ swagger:
 pong:
   rest: false
   servicebus: false
+  eventhub: false
 
 spring:
   application:

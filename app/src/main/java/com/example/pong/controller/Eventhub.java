@@ -3,6 +3,7 @@ package com.example.pong.controller;
 import com.example.Ping;
 import com.example.pong.service.PongService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.Input;
 import org.springframework.cloud.stream.annotation.Output;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Controller;
     Eventhub.PingProcessor.class,
     Eventhub.PongProcessor.class
 })
+@ConditionalOnProperty(name = "pong.eventhub", havingValue = "true")
 public class Eventhub {
 
     @Autowired
